@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use Domain\User\User;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Domain\AccessControl\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
@@ -32,15 +32,17 @@ class UserFactory extends Factory
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
-     *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    public function unverified()
+    public function testUser()
     {
         return $this->state(function () {
             return [
-                'email_verified_at' => null,
+                "name" => "Fabiano",
+                "email" => "fabiano@sigaa.com.br",
+                'email_verified_at' => "2020-05-25T15:16:27.000000Z",
+                "password" => bcrypt('12312345'),
+                "remember_token" => Str::random(10)
             ];
         });
     }
