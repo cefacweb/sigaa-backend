@@ -11,4 +11,9 @@ class Permission extends Model
     {
         return $this->belongsToMany(Role::class);
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\PermissionFactory::new();
+    }
 }

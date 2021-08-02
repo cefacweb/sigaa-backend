@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Domain\User\User::class,
+            'model' => Domain\AccessControl\User::class,
         ]
     ],
 

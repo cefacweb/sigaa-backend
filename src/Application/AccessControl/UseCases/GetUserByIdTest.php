@@ -16,13 +16,12 @@ class GetUserByIdTest extends TestCase
     {
         parent::setUp();
 
-        $this->testUser = User::factory()->testUser()->create();
+        $this->testUser = User::factory()->create();
     }
 
-    public function test_can_get_user_by_id()
+    public function test_can_get_user_by_id(): void
     {
-        $class = new GetUserById();
-        $result = $class->handle($this->testUser->id);
+        $result = GetUserById::handle($this->testUser->id);
 
         self::assertEquals($result->getAttributes(), $this->testUser->getAttributes());
     }

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => '/v1/admin'], function () {
+Route::group(['prefix' => '/v1/admin', 'as' => 'admin.'], function () {
     Route::group(['middleware' => 'auth:api'], function () {
-        Route::get('/user', function (Request $request) {
-            return $request->user();
+        Route::group(['middleware' => 'auth:api'], function () {
+            // Route::apiResource('user', 'AccessControl\\UserController')->only(['index']);
         });
     });
 });
