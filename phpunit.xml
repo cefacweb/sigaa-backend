@@ -12,11 +12,22 @@
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
     </testsuites>
+
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./src</directory>
         </include>
+
+        <report>
+            <html outputDirectory="./report/coverage-result.html" lowUpperBound="50" highLowerBound="90"/>
+        </report>
     </coverage>
+
+    <logging>
+        <testdoxHtml outputFile="./report/test-result.html"/>
+        <junit outputFile="./report/junit.xml"/>
+    </logging>
+
     <php>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
