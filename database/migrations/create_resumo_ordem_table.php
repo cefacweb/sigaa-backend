@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateResumoOrdemTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('resumo_ordem', function (Blueprint $table) {
+            $table->integer('NUM_ORDEM')->primary();
+            $table->string('DSC_RESUMO', 100);
+            $table->smallInteger('IND_CLASSE_RESUMO')->nullable();
         });
     }
 
@@ -26,6 +27,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('resumo_ordem');
     }
 }
