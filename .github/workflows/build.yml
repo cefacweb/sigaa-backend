@@ -17,6 +17,9 @@ jobs:
 
       - uses: php-actions/composer@v6
 
+      - name: Generate Laravel key
+        run: cp .env.example .env && ./artisan key:generate
+
       - uses: php-actions/phpunit@v3
         with:
           configuration: phpunit.xml
