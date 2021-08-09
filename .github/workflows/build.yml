@@ -6,8 +6,8 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
-    name: Checkout & build
+  tests:
+    name: Run tests & Scan
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -17,19 +17,9 @@ jobs:
 
       - uses: php-actions/composer@v6
 
-  tests:
-    name: Run tests
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Run tests
         run: vendor/bin/sail test --coverage-clover storage/phpunit/coverage.clover.xml --log-junit storage/phpunit/phpunit.xml
 
-  scan:
-    name: SonarCloud sacn
-    runs-on: ubuntu-latest
-    needs: tests
-    steps:
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
