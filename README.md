@@ -1,4 +1,4 @@
-## About Siga
+## About Sigaa
 
 TBD
 
@@ -23,6 +23,10 @@ This project uses Laravel, which uses [sail](https://laravel.com/docs/8.x/sail#i
 
 ### Migrations
 You can create the database schemas and seed it using: `vendor/bin/sail artisan migrate --seed`.
+
+## Testing
+
+TBD
 
 ## Security Issues
 
