@@ -15,23 +15,26 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: php-actions/composer@v6
+      - name: Composer install
+        uses: php-actions/composer@v6
 
       - name: Generate Laravel key
         run: cp .env.example .env && ./artisan key:generate
 
-      - uses: php-actions/phpunit@v3
+      - name: PHPunit
+        uses: php-actions/phpunit@v3
         with:
+          php_extensions: xdebug
           configuration: phpunit.xml
-          log_junit: storage/phpunit/junit.xml
-          args: --coverage-clover storage/phpunit/coverage.clover.xml
+          log_junit: junit.xml
+          args: --coverage-clover coverage.clover.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.php.tests.reportPath=./storage/phpunit/junit.xml
-            -Dsonar.php.coverage.reportPaths=./storage/phpunit/coverage.clover.xml
+            -Dsonar.php.tests.reportPath=junit.xml
+            -Dsonar.php.coverage.reportPaths=coverage.clover.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

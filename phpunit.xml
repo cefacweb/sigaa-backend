@@ -25,7 +25,6 @@
 
     <logging>
         <testdoxHtml outputFile="./report/test-result.html"/>
-        <junit outputFile="./report/junit.xml"/>
     </logging>
 
     <php>
