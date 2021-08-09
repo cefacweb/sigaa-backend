@@ -10,3 +10,5 @@ Homestead.json
 .phpunit.result.cache
 .scannerwork
 report
+coverage.clover.xml
+phpunit.xml
