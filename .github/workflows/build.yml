@@ -26,7 +26,7 @@ jobs:
         uses: php-actions/phpunit@v3
         with:
           php_extensions: xdebug
-          configuration: phpunit.build.xml
+          configuration: phpunit.xml
           log_junit: reports/junit.xml
           args: --coverage-clover reports/coverage.clover.xml
 
