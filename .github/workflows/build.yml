@@ -17,14 +17,17 @@ jobs:
 
       - uses: php-actions/composer@v6
 
-      - name: Run tests
-        run: vendor/bin/sail test --coverage-clover storage/phpunit/coverage.clover.xml --log-junit storage/phpunit/phpunit.xml
+      - uses: php-actions/phpunit@v3
+        with:
+          configuration: phpunit.xml
+          log_junit: storage/phpunit/junit.xml
+          args: --coverage-clover storage/phpunit/coverage.clover.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.php.tests.reportPath=./storage/phpunit/phpunit.xml
+            -Dsonar.php.tests.reportPath=./storage/phpunit/junit.xml
             -Dsonar.php.coverage.reportPaths=./storage/phpunit/coverage.clover.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
