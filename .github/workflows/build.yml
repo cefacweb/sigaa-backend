@@ -5,6 +5,9 @@ on:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+defaults:
+  run:
+    working-directory: /github/workspace
 jobs:
   tests:
     name: Run tests & Scan
