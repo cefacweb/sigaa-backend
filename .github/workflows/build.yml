@@ -27,6 +27,8 @@ jobs:
         with:
           php_extensions: xdebug
           configuration: phpunit.xml
+        env:
+          XDEBUG_MODE: coverage
 
       - name: Fix report paths
         working-directory: ./report
