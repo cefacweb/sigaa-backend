@@ -5,16 +5,45 @@ on:
       - master
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  tests:
+    name: Run tests & Scan
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out code
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
+
+      - name: Composer install
+        uses: php-actions/composer@v6
+
+      - name: Generate Laravel key
+        run: cp .env.example .env && ./artisan key:generate
+
+      - name: PHPunit
+        uses: php-actions/phpunit@v3
+        with:
+          php_extensions: xdebug
+          configuration: phpunit.xml
+          log_junit: report/junit.xml
+          args: "--coverage-clover report/coverage.clover.xml"
+        env:
+          XDEBUG_MODE: coverage
+
+      - name: Fix report paths
+        working-directory: ./report
+        run: |
+          sudo sed -i 's@name="/app/@name="/github/workspace/@g' coverage.clover.xml
+          sudo sed -i 's@file="/app/@file="/github/workspace/@g' junit.xml
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.php.tests.reportPath=report/junit.xml
+            -Dsonar.php.coverage.reportPaths=report/coverage.clover.xml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
