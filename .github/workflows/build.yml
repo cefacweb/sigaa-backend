@@ -27,8 +27,6 @@ jobs:
         with:
           php_extensions: xdebug
           configuration: phpunit.xml
-          log_junit: report/junit.xml
-          args: "--coverage-clover report/coverage.clover.xml"
 
       - name: Fix report paths
         working-directory: ./report
