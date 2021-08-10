@@ -36,9 +36,9 @@ jobs:
         working-directory: ./report
         run: |
           sudo sed -i 's@name="/app/@name="/github/workspace/@g' coverage.clover.xml
-          sudo sed -i 's@name="/app/@name="/github/workspace/@g' junit.xml
+          sudo sed -i 's@file="/app/@file="/github/workspace/@g' junit.xml
           sudo sed 's@name="/app/@name="/github/workspace/@g' coverage.clover.xml
-          sudo sed 's@name="/app/@name="/github/workspace/@g' junit.xml
+          sudo sed 's@file="/app/@file="/github/workspace/@g' junit.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
