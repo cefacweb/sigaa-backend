@@ -19,14 +19,12 @@
         </include>
 
         <report>
-            <clover outputFile="./report/coverage.clover.xml"/>
             <html outputDirectory="./report/coverage-result.html" lowUpperBound="50" highLowerBound="90"/>
         </report>
     </coverage>
 
     <logging>
         <testdoxHtml outputFile="./report/test-result.html"/>
-        <junit outputFile="./report/junit.xml"/>
     </logging>
 
     <php>

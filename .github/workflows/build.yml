@@ -27,15 +27,14 @@ jobs:
         with:
           php_extensions: xdebug
           configuration: phpunit.xml
-        env:
-          XDEBUG_MODE: coverage
+          log_junit: report/junit.xml
+          args: "--coverage-clover report/coverage.clover.xml"
 
       - name: Fix report paths
         working-directory: ./report
         run: |
-          ls
-          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.clover.xml
-          sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' junit.xml
+          sudo sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' coverage.clover.xml
+          sudo sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' junit.xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
