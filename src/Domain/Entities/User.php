@@ -1,7 +1,7 @@
 <?php
 // @author : Micheus - Ago/2021
 
-namespace App\Models;
+namespace Domain\Entities;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

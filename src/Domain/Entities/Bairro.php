@@ -1,7 +1,7 @@
 <?php
 // @author : Micheus - Ago/2021
 
-namespace App\Models\Models;
+namespace Domain\Entities\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +17,7 @@ class Bairro extends Model
      */
     protected $table = 'bairro';
 
-    private $fillable = [
+    protected $fillable = [
         'COD_BAIRRO',
         'NOM_BAIRRO',
         'COD_BAIRRO',

@@ -1,7 +1,7 @@
 <?php
 // @author : Micheus - Ago/2021
 
-namespace App\Models;
+namespace Domain\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +17,7 @@ class Alimento extends Model
      */
     protected $table = 'alimento';
 
-    private $fillable = [
+    protected $fillable = [
         'COD_ALIMENTO',
         'DSC_ALIMENTO',
         'VLR_PESO_UNITARIO',
