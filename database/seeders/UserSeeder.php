@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Domain\Entities\AccessControl\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
@@ -13,6 +14,12 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \Domain\AccessControl\User::factory(10)->create();
+        User::factory()->make([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com.br',
+            'password' => bcrypt('admin')
+        ])->save();
+
+        User::factory(10)->create();
     }
 }

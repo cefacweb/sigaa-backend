@@ -31,9 +31,9 @@ return [
     */
 
     'middleware' => [
-        'verify_csrf_token' => Presentation\Http\Middleware\VerifyCsrfToken::class,
-        'encrypt_cookies' => Presentation\Http\Middleware\EncryptCookies::class,
+        'verify_csrf_token' => Http\Middleware\VerifyCsrfToken::class,
+        'encrypt_cookies' => Http\Middleware\EncryptCookies::class,
     ],
 
-    'prefix' => 'api/v1/auth/simpleauth/'
+    'prefix' => 'api/v1/auth/'
 ];

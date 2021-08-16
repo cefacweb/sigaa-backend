@@ -14,12 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => '/v1'], function () {
+Route::group(['prefix' => '/v1', 'as' => 'api.'], function () {
     Route::post('auth/simpleauth/login', 'AccessControl\\SimpleAuthController@login')->name('auth.login');
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
-        // Route::apiResource('user', 'AccessControl\\UserController')->only(['index']);
-
         Route::get('auth/simpleauth/logout', 'AccessControl\\SimpleAuthController@logout')->name('auth.logout');
+        Route::apiResource('user/permissions', 'AccessControl\\UserPermissionsController')->only('index');
     });
 });

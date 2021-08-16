@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => '/v1/admin', 'as' => 'admin.'], function () {
-    Route::group(['middleware' => 'auth:api'], function () {
-        Route::group(['middleware' => 'auth:api'], function () {
-            // Route::apiResource('user', 'AccessControl\\UserController')->only(['index']);
-        });
+Route::group(['prefix' => '/v1', 'as' => 'admin.'], function () {
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::apiResource('users', 'AccessControl\\UsersController')->only(['index']);
+        Route::apiResource('roles', 'AccessControl\\RolesController');
+        Route::apiResource('permissions', 'AccessControl\\PermissionsController')->only(['index']);
+
+        Route::apiResource('roles/{role}/permissions', 'AccessControl\\RolesPermissionsController')->only(['index', 'store', 'destroy']);
+        Route::apiResource('user/{user}/roles', 'AccessControl\\UserRolesController')->only(['index', 'store', 'destroy']);
     });
 });
