@@ -173,7 +173,6 @@ return [
         Providers\AuthServiceProvider::class,
         Providers\EventServiceProvider::class,
         Providers\RouteServiceProvider::class,
-        Providers\PermissionsServiceProvider::class,
         Providers\RepositoryServiceProvider::class
 
     ],
