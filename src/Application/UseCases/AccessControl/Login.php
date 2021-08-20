@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

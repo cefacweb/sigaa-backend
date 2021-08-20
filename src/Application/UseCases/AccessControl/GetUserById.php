@@ -1,8 +1,8 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
-use Domain\Entities\AccessControl\User;
+use Application\DTO\AccessControl\UserDTO;
 use Domain\Repositories\AccessControl\UserRepositoryInterface;
 
 class GetUserById
@@ -14,9 +14,10 @@ class GetUserById
         $this->userRepository = app()->make(UserRepositoryInterface::class);
     }
 
-    // TODO return DTO instead of Model
-    public function __invoke(string $userId): User
+    public function __invoke(string $userId): UserDTO
     {
-        return $this->userRepository->find($userId);
+        return new UserDTO(
+            $this->userRepository->find($userId)->toArray()
+        );
     }
 }

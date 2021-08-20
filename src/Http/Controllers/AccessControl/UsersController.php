@@ -2,9 +2,9 @@
 
 namespace Http\Controllers\AccessControl;
 
-use Domain\Entities\AccessControl\User;
 use Http\Controllers\Controller;
 use Http\Resources\UserResource;
+use Domain\Entities\AccessControl\User;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UsersController extends Controller

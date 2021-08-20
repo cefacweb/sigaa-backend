@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
 use Domain\Repositories\AccessControl\RoleRepositoryInterface;
@@ -17,7 +17,6 @@ class AddUserToRoles
         $this->roleRepository = app()->make(RoleRepositoryInterface::class);
     }
 
-    // TODO return DTO instead of Model
     public function __invoke(string $userId, Collection $roleIds): void
     {
         $user = $this->userRepository->find($userId);

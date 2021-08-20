@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Domain\Entities\AccessControl\User;
@@ -25,6 +25,6 @@ class GetUserByIdTest extends TestCase
         $useCase = new GetUserById(new UserRepository);
         $result = $useCase($this->testUser->id);
 
-        self::assertEquals($result->getAttributes(), $this->testUser->getAttributes());
+        self::assertEquals($result->id, $this->testUser->id);
     }
 }

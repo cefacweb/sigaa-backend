@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
 use Exceptions\InvalidPermissionException;
@@ -17,7 +17,6 @@ class AddPermissionsToRole
         $this->roleRepository = new RoleRepository;
     }
 
-    // TODO return DTO instead of Model
     public function __invoke(string $roleId, Collection $permissions): void
     {
         $role = $this->roleRepository->find($roleId);

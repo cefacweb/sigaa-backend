@@ -5,7 +5,7 @@ namespace Http\Controllers\AccessControl;
 use Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Http\Resources\PermissionResource;
-use UseCases\AccessControl\GetUserPermissions;
+use Application\UseCases\AccessControl\GetUserPermissions;
 
 class UserPermissionsController extends Controller
 {
@@ -13,7 +13,7 @@ class UserPermissionsController extends Controller
     {
         $useCase = new GetUserPermissions();
         $result = $useCase(Auth::user()->id);
-        
+
         return PermissionResource::collection($result);
     }
 }

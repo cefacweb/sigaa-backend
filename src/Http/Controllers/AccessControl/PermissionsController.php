@@ -3,17 +3,20 @@
 namespace Http\Controllers\AccessControl;
 
 use Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use Http\Resources\PermissionResource;
-use UseCases\AccessControl\GetAllPermissions;
+use Application\UseCases\AccessControl\GetAllPermissions;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class PermissionsController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        // TODO add pagination
-        $useCase = new GetAllPermissions();
+        Gate::authorize('admin');
 
-        return PermissionResource::collection($useCase());
+        // TODO add pagination
+        $permissions = new GetAllPermissions();
+
+        return PermissionResource::collection($permissions());
     }
 }

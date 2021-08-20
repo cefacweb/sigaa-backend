@@ -2,13 +2,13 @@
 
 namespace Http\Controllers\AccessControl;
 
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
 use Http\Controllers\Controller;
 use Http\Resources\RoleResource;
 use Http\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
-use UseCases\AccessControl\AddUserToRoles;
+use Domain\Entities\AccessControl\Role;
+use Domain\Entities\AccessControl\User;
+use Application\UseCases\AccessControl\AddUserToRoles;
 use Http\Requests\AccessControl\StoreUsersPermissionRequest;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 

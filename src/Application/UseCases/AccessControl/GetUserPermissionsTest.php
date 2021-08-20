@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Domain\Entities\AccessControl\Role;
