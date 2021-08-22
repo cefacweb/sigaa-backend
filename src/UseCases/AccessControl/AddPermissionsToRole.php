@@ -2,10 +2,11 @@
 
 namespace UseCases\AccessControl;
 
-use Domain\Repositories\AccessControl\RoleRepository;
 use Illuminate\Support\Collection;
 use Exceptions\InvalidPermissionException;
-use Illuminate\Contracts\Container\BindingResolutionException;
+use Domain\Entities\AccessControl\Permission;
+use Domain\Repositories\AccessControl\RoleRepository;
+use Spatie\Permission\Exceptions\PermissionDoesNotExist;
 
 class AddPermissionsToRole
 {
@@ -23,8 +24,8 @@ class AddPermissionsToRole
 
         $permissions->each(function ($permissionName) {
             try {
-                app()->make($permissionName);
-            } catch (BindingResolutionException) {
+                Permission::findByName($permissionName);
+            } catch (PermissionDoesNotExist) {
                 throw new InvalidPermissionException;
             }
         });

@@ -9,7 +9,7 @@ use Domain\Entities\AccessControl\Permission;
 use UseCases\AccessControl\AddPermissionsToRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Domain\Repositories\AccessControl\RoleRepository;
-use UseCases\AccessControl\Permissions\CanViewDashboard;
+
 
 class AddPermissionsToRoleTest extends TestCase
 {
@@ -26,14 +26,14 @@ class AddPermissionsToRoleTest extends TestCase
 
     public function test_can_add_permissions_to_role(): void
     {
-        $permission = new CanViewDashboard();
+        $this->permission = Permission::factory()->create();
 
         $useCase = new AddPermissionsToRole(new RoleRepository);
-        $useCase($this->role->id, collect([$permission->getName()]));
+        $useCase($this->role->id, collect([$this->permission->name]));
 
         $this->assertDatabaseHas('role_has_permissions', [
             'role_id' => $this->role->id,
-            'permission_id' => Permission::findByName($permission->getName())->id
+            'permission_id' => Permission::findByName($this->permission->name)->id
         ]);
     }
 
