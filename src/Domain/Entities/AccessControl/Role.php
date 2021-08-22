@@ -5,8 +5,8 @@ namespace Domain\Entities\AccessControl;
 use Domain\Entities\Traits\HasUuids;
 use Exceptions\InvalidRoleException;
 use Spatie\Permission\Models\Role as BaseRole;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Permission\Contracts\Role as RoleContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Role extends BaseRole
 {

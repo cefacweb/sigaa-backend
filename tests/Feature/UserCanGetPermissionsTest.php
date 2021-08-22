@@ -3,11 +3,11 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+use Illuminate\Support\Facades\Auth;
 use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
-use Illuminate\Support\Facades\Auth;
+use Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use UseCases\AccessControl\Permissions\CanViewDashboard;
 
 class UserCanGetPermissionsTest extends TestCase
 {
@@ -21,9 +21,9 @@ class UserCanGetPermissionsTest extends TestCase
         parent::setUp();
 
         // Create permission
-        $this->permission = new CanViewDashboard();
+        $this->permission = Permission::factory()->create();
         $permissions = collect();
-        $permissions->push($this->permission->getName());
+        $permissions->push($this->permission->name);
 
         // Create role
         $role = Role::factory()->create();
@@ -46,8 +46,8 @@ class UserCanGetPermissionsTest extends TestCase
         $response->assertJson([
             'data' => [
                 [
-                    'name' => $this->permission->getName(),
-                    'description' => $this->permission->getDescription(),
+                    'name' => $this->permission->name,
+                    'description' => $this->permission->description,
                 ]
             ]
         ]);
