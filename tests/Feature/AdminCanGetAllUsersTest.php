@@ -8,9 +8,9 @@ use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
 use Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\PermissionRepository;
+use Infra\AccessControl\Repositories\UserRepository;
 
-class AdminCanGetAllPermissionsTest extends TestCase
+class AdminCanGetAllUsersTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -43,11 +43,11 @@ class AdminCanGetAllPermissionsTest extends TestCase
         Auth::login($this->admin);
 
         $response = $this->getJson(
-            route("admin.permissions.index")
+            route("admin.users.index")
         );
 
         $responseIds = collect($response->json()['data'])->pluck('id');
-        $repositoryIds = (new PermissionRepository)->all()->pluck('id');
+        $repositoryIds = (new UserRepository)->all()->pluck('id');
 
         // TODO maybe check for pagination.
         $this->assertEquals($responseIds, $repositoryIds);
@@ -58,7 +58,7 @@ class AdminCanGetAllPermissionsTest extends TestCase
         Auth::login($this->user);
 
         $response = $this->getJson(
-            route("admin.permissions.index")
+            route("admin.users.index")
         );
 
         $response->assertForbidden();

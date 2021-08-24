@@ -4,7 +4,6 @@ namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

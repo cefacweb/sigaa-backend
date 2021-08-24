@@ -2,7 +2,7 @@
 
 namespace Application\UseCases\AccessControl;
 
-use Application\DTO\AccessControl\UserDTO;
+use Infra\AccessControl\DTO\UserDTO;
 use Domain\Repositories\AccessControl\UserRepositoryInterface;
 
 class GetUserById
@@ -16,8 +16,6 @@ class GetUserById
 
     public function __invoke(string $userId): UserDTO
     {
-        return new UserDTO(
-            $this->userRepository->find($userId)->toArray()
-        );
+        return $this->userRepository->find($userId);
     }
 }

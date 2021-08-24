@@ -17,12 +17,6 @@ class GetUserPermissions
 
     public function __invoke(string $userId): Collection
     {
-        $permissionsDTO = collect();
-
-        $this->permissionRepository->findAllByUserId($userId)->each(function ($permission) use ($permissionsDTO) {
-            $permissionsDTO->push(new PermissionDTO($permission->toArray()));
-        });
-
-        return $permissionsDTO;
+        return $this->permissionRepository->findAllByUserId($userId);
     }
 }

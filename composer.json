@@ -36,6 +36,7 @@
             "Domain\\": "src/Domain",
             "Exceptions\\": "src/Exceptions/",
             "Http\\": "src/Http/",
+			"Infra\\": "src/Infra/",
             "Providers\\": "src/Providers/",
             "Application\\": "src/Application/"
         }

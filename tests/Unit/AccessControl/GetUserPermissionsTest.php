@@ -7,7 +7,7 @@ use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
 use Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Domain\Repositories\AccessControl\PermissionRepository;
+use Infra\AccessControl\Repositories\PermissionRepository;
 
 class GetUserPermissionsTest extends TestCase
 {

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Application\DTO\AccessControl;
+namespace Infra\AccessControl\DTO;
 
-use Application\DTO\DTO;
+use Infra\DTO;
 
 class UserDTO extends DTO
 {
