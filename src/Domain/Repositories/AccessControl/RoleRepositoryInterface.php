@@ -3,11 +3,13 @@
 namespace Domain\Repositories\AccessControl;
 
 use Domain\Entities\AccessControl\Role;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 interface RoleRepositoryInterface
 {
     public function all(): Collection;
 
-    public function find(string $id = ""): Role;
+    public function find(string $roleId): Role;
+
+    public function assignRolesToUser(string $useId, Collection $roleIds): void;
 }

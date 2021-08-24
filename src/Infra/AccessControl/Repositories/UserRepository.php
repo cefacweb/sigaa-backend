@@ -1,7 +1,8 @@
 <?php
 
-namespace Domain\Repositories\AccessControl;
+namespace Infra\AccessControl\Repositories;
 
+use Infra\AccessControl\DTO\UserDTO;
 use Domain\Entities\AccessControl\User;
 use Illuminate\Database\Eloquent\Collection;
 use Domain\Repositories\AccessControl\UserRepositoryInterface;
@@ -13,8 +14,10 @@ class UserRepository implements UserRepositoryInterface
         return User::all();
     }
 
-    public function find(string $id = null): User
+    public function find(string $id = null): UserDTO
     {
-        return User::find($id);
+        return new UserDTO(
+            User::find($id)->toArray()
+        );
     }
 }

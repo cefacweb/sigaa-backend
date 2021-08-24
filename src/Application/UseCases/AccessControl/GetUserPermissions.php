@@ -1,8 +1,9 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
+use Application\DTO\AccessControl\PermissionDTO;
 use Domain\Repositories\AccessControl\PermissionRepositoryInterface;
 
 class GetUserPermissions
@@ -14,7 +15,6 @@ class GetUserPermissions
         $this->permissionRepository = app()->make(PermissionRepositoryInterface::class);
     }
 
-    // TODO return DTO instead of Model
     public function __invoke(string $userId): Collection
     {
         return $this->permissionRepository->findAllByUserId($userId);

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +18,6 @@ Route::group(['prefix' => '/v1', 'as' => 'api.'], function () {
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('auth/simpleauth/logout', 'AccessControl\\SimpleAuthController@logout')->name('auth.logout');
-        Route::apiResource('user/permissions', 'AccessControl\\UserPermissionsController')->only('index');
+        Route::name('users')->apiResource('user/permissions', 'AccessControl\\UserPermissionsController')->only('index');
     });
 });

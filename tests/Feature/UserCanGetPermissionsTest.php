@@ -15,10 +15,14 @@ class UserCanGetPermissionsTest extends TestCase
 
     private $user;
     private $permission;
+    private $invalidPermission;
 
     protected function setUp(): void
     {
         parent::setUp();
+
+        // Create invalid permission
+        $this->invalidPermission = Permission::factory()->make();
 
         // Create permission
         $this->permission = Permission::factory()->create();
@@ -39,15 +43,25 @@ class UserCanGetPermissionsTest extends TestCase
     public function test_user_can_get_permissions()
     {
         $response = $this->getJson(
-            route('api.permissions.index')
+            route('api.users.permissions.index')
         );
 
         $response->assertStatus(200);
+
         $response->assertJson([
             'data' => [
                 [
                     'name' => $this->permission->name,
                     'description' => $this->permission->description,
+                ]
+            ]
+        ]);
+
+        $response->assertJsonMissing([
+            'data' => [
+                [
+                    'name' => $this->invalidPermission->name,
+                    'description' => $this->invalidPermission->description,
                 ]
             ]
         ]);

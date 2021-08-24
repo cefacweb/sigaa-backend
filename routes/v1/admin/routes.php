@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +19,7 @@ Route::group(['prefix' => '/v1', 'as' => 'admin.'], function () {
         Route::apiResource('roles', 'AccessControl\\RolesController');
         Route::apiResource('permissions', 'AccessControl\\PermissionsController')->only(['index']);
 
-        Route::apiResource('roles/{role}/permissions', 'AccessControl\\RolesPermissionsController')->only(['index', 'store', 'destroy']);
-        Route::apiResource('user/{user}/roles', 'AccessControl\\UserRolesController')->only(['index', 'store', 'destroy']);
+        Route::name('roles')->apiResource('roles/{role}/permissions', 'AccessControl\\RolesPermissionsController')->only(['index', 'store', 'destroy']);
+        Route::name('users')->apiResource('user/{user}/roles', 'AccessControl\\UserRolesController')->only(['index', 'store', 'destroy']);
     });
 });

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/health', function () {
     return 'Healthy!';
 })->name('healthcheck');
-
-// Route::group(['namespace' => 'Laravel\\Sanctum\\Http\\Controllers'], function () {
-//     Route::get('auth/simpleauth/csrf-cookie', 'CsrfCookieController@show');
-// });

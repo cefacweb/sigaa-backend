@@ -3,11 +3,11 @@
 namespace Http\Controllers\AccessControl;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\JsonResponse;
-use UseCases\AccessControl\Login;
 use Http\Controllers\Controller;
-use UseCases\AccessControl\Logout;
+use Illuminate\Http\JsonResponse;
+use Application\UseCases\AccessControl\Login;
 use Http\Requests\AccessControl\LoginRequest;
+use Application\UseCases\AccessControl\Logout;
 
 class SimpleAuthController extends Controller
 {

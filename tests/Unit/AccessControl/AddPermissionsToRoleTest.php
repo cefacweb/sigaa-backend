@@ -1,15 +1,14 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Domain\Entities\AccessControl\Role;
 use Exceptions\InvalidPermissionException;
 use Domain\Entities\AccessControl\Permission;
-use UseCases\AccessControl\AddPermissionsToRole;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Domain\Repositories\AccessControl\RoleRepository;
-
+use Infra\AccessControl\Repositories\RoleRepository;
+use Application\UseCases\AccessControl\AddPermissionsToRole;
 
 class AddPermissionsToRoleTest extends TestCase
 {

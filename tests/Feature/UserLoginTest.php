@@ -31,4 +31,17 @@ class UserLoginTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function test_invalid_user_cant_login()
+    {
+        $response = $this->postJson(
+            route('api.auth.login'),
+            [
+                "email" => $this->user->email,
+                "password" => "invalid-password"
+            ]
+        );
+
+        $response->assertStatus(401);
+    }
 }

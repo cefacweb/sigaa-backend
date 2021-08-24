@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCases\AccessControl;
+namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 
@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Domain\Repositories\AccessControl\RoleRepository;
-use Domain\Repositories\AccessControl\UserRepository;
+use Infra\AccessControl\Repositories\RoleRepository;
+use Infra\AccessControl\Repositories\UserRepository;
 
 class AddUserToRolesTest extends TestCase
 {

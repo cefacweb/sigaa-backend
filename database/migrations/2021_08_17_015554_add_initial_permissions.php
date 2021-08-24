@@ -21,7 +21,7 @@ class AddInitialPermissions extends Migration
         ]);
 
         Permission::create([
-            'name' => 'cam-view-dashboard',
+            'name' => 'can-view-dashboard',
             'guard_name' => 'web',
             'description' => 'User can view dashboard'
         ]);

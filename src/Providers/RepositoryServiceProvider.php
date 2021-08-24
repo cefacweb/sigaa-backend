@@ -2,6 +2,7 @@
 
 namespace Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -12,8 +13,9 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     public $bindings = [
-        \Domain\Repositories\AccessControl\UserRepositoryInterface::class => \Domain\Repositories\AccessControl\UserRepository::class,
-        \Domain\Repositories\AccessControl\RoleRepositoryInterface::class => \Domain\Repositories\AccessControl\RoleRepository::class,
-        \Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Domain\Repositories\AccessControl\PermissionRepository::class
+        \Domain\Repositories\AccessControl\LoginRepositoryInterface::class => Auth::class,
+        \Domain\Repositories\AccessControl\UserRepositoryInterface::class => \Infra\AccessControl\Repositories\UserRepository::class,
+        \Domain\Repositories\AccessControl\RoleRepositoryInterface::class => \Infra\AccessControl\Repositories\RoleRepository::class,
+        \Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Infra\AccessControl\Repositories\PermissionRepository::class
     ];
 }
