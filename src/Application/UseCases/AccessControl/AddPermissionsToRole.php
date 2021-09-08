@@ -17,11 +17,9 @@ class AddPermissionsToRole
         $this->roleRepository = app()->make(RoleRepositoryInterface::class);
     }
 
-    public function __invoke(string $roleId, Collection $permissions): void
+    public function __invoke(string $roleId, Collection $permissionNames): void
     {
-        $role = $this->roleRepository->find($roleId);
-
-        $permissions->each(function ($permissionName) {
+        $permissionNames->each(function ($permissionName) {
             try {
                 Permission::findByName($permissionName);
             } catch (PermissionDoesNotExist) {
@@ -29,6 +27,6 @@ class AddPermissionsToRole
             }
         });
 
-        $role->syncPermissions($permissions);
+        $this->roleRepository->addPermissionsToRole($roleId, $permissionNames);
     }
 }

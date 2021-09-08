@@ -3,7 +3,6 @@
 namespace Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
-use Infra\AccessControl\DTO\PermissionDTO;
 use Domain\Repositories\AccessControl\PermissionRepositoryInterface;
 
 class GetAllPermissions

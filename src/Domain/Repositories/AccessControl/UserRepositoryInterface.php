@@ -9,5 +9,5 @@ interface UserRepositoryInterface
 {
     public function all(): Collection;
 
-    public function find(string $id = ""): UserDTO;
+    public function find(string $id): UserDTO;
 }

@@ -2,11 +2,11 @@
 
 namespace Domain\Repositories\AccessControl;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
 
 interface PermissionRepositoryInterface
 {
     public function all();
 
-    public function findAllByUserId(string $id = ""): Collection;
+    public function findAllByUserId(string $id): Collection;
 }

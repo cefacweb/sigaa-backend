@@ -16,6 +16,6 @@ class AddUserToRoles
 
     public function __invoke(string $userId, Collection $roleIds): void
     {
-        $this->roleRepository->assignRolesToUser($userId, $roleIds);
+        $this->roleRepository->addRolesToUser($userId, $roleIds);
     }
 }

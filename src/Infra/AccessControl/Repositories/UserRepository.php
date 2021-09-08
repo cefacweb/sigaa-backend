@@ -11,10 +11,12 @@ class UserRepository implements UserRepositoryInterface
 {
     public function all(): Collection
     {
-        return User::all();
+        return User::all()->each(function($user) {
+            return new UserDTO($user->toArray());
+        });
     }
 
-    public function find(string $id = null): UserDTO
+    public function find(string $id): UserDTO
     {
         return new UserDTO(
             User::find($id)->toArray()
