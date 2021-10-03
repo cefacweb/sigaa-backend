@@ -2,7 +2,6 @@
 
 namespace Infra\AccessControl\Repositories;
 
-use Domain\Entities\AccessControl\User;
 use Infra\AccessControl\DTO\PermissionDTO;
 use Illuminate\Support\Collection;
 use Domain\Entities\AccessControl\Permission;
@@ -17,10 +16,10 @@ class PermissionRepository implements PermissionRepositoryInterface
         });
     }
 
-    public function findAllByUserId(string $id): Collection
+    public function findByUuid(string $permissionId): PermissionDTO
     {
-        return User::find($id)->getAllPermissions()->map(function ($permission) {
-            return new PermissionDTO($permission->toArray());
-        });
+        return new PermissionDTO(
+            Permission::findByUuid($permissionId)->toArray()
+        );
     }
 }

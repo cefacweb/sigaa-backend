@@ -14,7 +14,7 @@ class StoreRolesPermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'permission_name' => 'required|exists:permissions,name'
+            'permission_id' => 'required|exists:permissions,id'
         ];
     }
 }

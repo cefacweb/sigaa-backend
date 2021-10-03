@@ -28,11 +28,11 @@ class AddPermissionsToRoleTest extends TestCase
         $this->permission = Permission::factory()->create();
 
         $useCase = new AddPermissionsToRole(new RoleRepository);
-        $useCase($this->role->id, collect([$this->permission->name]));
+        $useCase($this->role->id, collect([$this->permission->id]));
 
         $this->assertDatabaseHas('role_has_permissions', [
             'role_id' => $this->role->id,
-            'permission_id' => Permission::findByName($this->permission->name)->id
+            'permission_id' => $this->permission->id
         ]);
     }
 

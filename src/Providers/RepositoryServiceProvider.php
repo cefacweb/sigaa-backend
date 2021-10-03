@@ -14,7 +14,9 @@ class RepositoryServiceProvider extends ServiceProvider
     public $bindings = [
         \Domain\Repositories\AccessControl\UserRepositoryInterface::class => \Infra\AccessControl\Repositories\UserRepository::class,
         \Domain\Repositories\AccessControl\RoleRepositoryInterface::class => \Infra\AccessControl\Repositories\RoleRepository::class,
-        \Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Infra\AccessControl\Repositories\PermissionRepository::class
+        \Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Infra\AccessControl\Repositories\PermissionRepository::class,
+
+        \Domain\Repositories\Payment\ChargeRepositoryInterface::class => \Infra\Payment\Repositories\ChargeRepository::class
     ];
 
     public function register()

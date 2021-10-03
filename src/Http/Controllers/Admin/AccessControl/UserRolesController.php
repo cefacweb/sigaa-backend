@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Http\Controllers\Admin\AccessControl;
 
 use Http\Controllers\Controller;
 use Http\Resources\RoleResource;
@@ -25,7 +25,7 @@ class UserRolesController extends Controller
         $validatedRequest = $request->validated();
 
         $useCase = new AddUserToRoles();
-        $useCase($user, collect([$validatedRequest['role_name']]));
+        $useCase($user->id, collect([$validatedRequest['role_id']]));
 
         return (new UserResource($user))->response()->setStatusCode(201);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Http\Controllers\Admin\AccessControl;
 
 use Http\Controllers\Controller;
 use Http\Resources\RoleResource;
@@ -24,8 +24,8 @@ class RolesPermissionsController extends Controller
         $validatedRequest = $request->validated();
 
         $useCase(
-            $role,
-            collect([$validatedRequest['permission_name']])
+            $role->id,
+            collect([$validatedRequest['permission_id']])
         );
 
         return (new RoleResource($role))->response()->setStatusCode(201);

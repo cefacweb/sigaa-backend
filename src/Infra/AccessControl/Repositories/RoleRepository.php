@@ -18,13 +18,6 @@ class RoleRepository implements RoleRepositoryInterface
         });
     }
 
-    public function find(string $roleId): RoleDTO
-    {
-        return new RoleDTO(
-            Role::findByUuid($roleId)->toArray()
-        );
-    }
-
     public function addRolesToUser(string $userId, Collection $roleIds): void
     {
         $roles = $roleIds->map(function ($roleId) {
@@ -34,10 +27,10 @@ class RoleRepository implements RoleRepositoryInterface
         User::find($userId)->assignRole($roles->toArray());
     }
 
-    public function addPermissionsToRole(string $roleId, Collection $permissionNames): void
+    public function addPermissionsToRole(string $roleId, Collection $permissionIds): void
     {
-        $permissions = $permissionNames->map(function ($permissionName) {
-            return Permission::findByName($permissionName)->name;
+        $permissions = $permissionIds->map(function ($permissionId) {
+            return Permission::findByUuid($permissionId)->name;
         });
 
         Role::find($roleId)->syncPermissions($permissions->toArray());

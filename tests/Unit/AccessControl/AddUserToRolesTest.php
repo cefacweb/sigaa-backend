@@ -4,6 +4,7 @@ namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 
+use Exceptions\InvalidRoleException;
 use Illuminate\Support\Facades\Auth;
 use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
@@ -45,6 +46,22 @@ class AddUserToRolesTest extends TestCase
         $this->roles->each(function ($role) {
             $this->assertDatabaseHas('model_has_roles', [
                 'role_id' => $role->id,
+                'model_type' => User::class,
+                'model_uuid' => $this->user->id
+            ]);
+        });
+    }
+
+    public function test_cant_add_invalid_role_to_user(): void
+    {
+        $this->expectException(InvalidRoleException::class);
+
+        $useCase = new AddUserToRoles(new UserRepository ,new RoleRepository);
+        $useCase($this->user->id, collect(['invalid-role']));
+
+        $this->roles->each(function () {
+            $this->assertDatabaseMissing('model_has_roles', [
+                'role_id' => 'invalid-role',
                 'model_type' => User::class,
                 'model_uuid' => $this->user->id
             ]);

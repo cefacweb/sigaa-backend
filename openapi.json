@@ -1,0 +1,86 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sigaa backend API",
+        "version": "v1"
+    },
+    "servers": [
+        {
+            "url": "{schema}://{url}",
+            "description": "Local environment",
+            "variables": {
+                "schema": {
+                    "enum": [
+                        "http",
+                        "https"
+                    ],
+                    "default": "http"
+                },
+                "url": {
+                    "enum": [
+                        "localhost"
+                    ],
+                    "default": "localhost"
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/api/v1/charges": {
+            "get": {
+                "tags": [
+                    "Charges"
+                ],
+                "operationId": "e3eceddd164037b92a16f18df5355e19",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": "charge"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerToken": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "charge": {
+                "title": "Charge",
+                "properties": {
+                    "": {
+                        "description": "The value of the charge",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerToken": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Charges",
+            "description": "Charges"
+        }
+    ]
+}

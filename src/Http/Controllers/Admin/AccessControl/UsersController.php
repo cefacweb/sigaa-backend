@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Http\Controllers\Admin\AccessControl;
 
 use Http\Controllers\Controller;
 use Http\Resources\UserResource;
@@ -12,8 +12,6 @@ class UsersController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        Gate::authorize('admin');
-
         return UserResource::collection(User::paginate(10));
     }
 }

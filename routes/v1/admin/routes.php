@@ -14,12 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/v1', 'as' => 'admin.'], function () {
-    Route::group(['middleware' => 'auth:sanctum'], function () {
-        Route::apiResource('users', 'AccessControl\\UsersController')->only(['index']);
-        Route::apiResource('roles', 'AccessControl\\RolesController');
-        Route::apiResource('permissions', 'AccessControl\\PermissionsController')->only(['index']);
+    Route::group(['middleware' => ['auth:sanctum', 'can:admin']], function () {
+        Route::apiResource('users', 'Admin\\AccessControl\\UsersController')->only(['index']);
+        Route::apiResource('roles', 'Admin\\AccessControl\\RolesController');
+        Route::apiResource('permissions', 'Admin\\AccessControl\\PermissionsController')->only(['index']);
 
-        Route::name('roles')->apiResource('roles/{role}/permissions', 'AccessControl\\RolesPermissionsController')->only(['index', 'store', 'destroy']);
-        Route::name('users')->apiResource('user/{user}/roles', 'AccessControl\\UserRolesController')->only(['index', 'store', 'destroy']);
+        Route::name('roles')->apiResource('roles/{role}/permissions', 'Admin\\AccessControl\\RolesPermissionsController')->only(['index', 'store', 'destroy']);
+        Route::name('users')->apiResource('user/{user}/roles', 'Admin\\AccessControl\\UserRolesController')->only(['index', 'store', 'destroy']);
     });
 });

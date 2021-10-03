@@ -17,7 +17,7 @@ class Role extends BaseRole
         $role = static::where('id', $id)->first();
 
         if (! $role) {
-            throw InvalidRoleException::class;
+            throw new InvalidRoleException;
         }
 
         return $role;

@@ -15,7 +15,16 @@ abstract class DTO implements DTOInterface
 
         foreach ($class->getProperties(ReflectionProperty::IS_PUBLIC) as $reflectionProperty){
             $property = $reflectionProperty->getName();
-            $this->{$property} = $parameters[$property];
+
+            if ($propertyType = $reflectionProperty->getType()) {
+                $propertyTypeName = $propertyType->getName();
+
+                $this->{$property} = $this->{$property} = new $propertyTypeName(
+                    $parameters[$property]
+                );
+            } else {
+                $this->{$property} = $parameters[$property];
+            }
         }
     }
 }

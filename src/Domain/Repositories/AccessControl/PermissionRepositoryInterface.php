@@ -2,11 +2,11 @@
 
 namespace Domain\Repositories\AccessControl;
 
-use Illuminate\Support\Collection;
+use Infra\AccessControl\DTO\PermissionDTO;
 
 interface PermissionRepositoryInterface
 {
     public function all();
 
-    public function findAllByUserId(string $id): Collection;
+    public function findByUuid(string $id): PermissionDTO;
 }

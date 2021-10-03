@@ -43,7 +43,7 @@ class UserCanGetPermissionsTest extends TestCase
     public function test_user_can_get_permissions()
     {
         $response = $this->getJson(
-            route('api.users.permissions.index')
+            route('api.user.permissions.index')
         );
 
         $response->assertStatus(200);
