@@ -13,6 +13,8 @@ class UserCanCreateChargeTest extends TestCase
 
     private $user;
 
+    private $payer;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -25,7 +27,7 @@ class UserCanCreateChargeTest extends TestCase
     public function test_user_can_create_charge_to_valid_payer()
     {
         $response = $this->postJson(
-            route('api.charges.store'),
+            route('api.charge.store'),
             [
                 "user_id" => $this->payer->id,
                 "value" => "100",
@@ -39,7 +41,7 @@ class UserCanCreateChargeTest extends TestCase
     public function test_user_cant_create_charge_to_invalid_payer()
     {
         $response = $this->postJson(
-            route('api.charges.store'),
+            route('api.charge.store'),
             [
                 "user_id" => "Invalid Id",
                 "value" => "100",

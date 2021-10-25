@@ -7,7 +7,7 @@ namespace Http;
  *   title="Sigaa backend API",
  *   version="v1",
  * )
- * 
+ *
  * @OA\Server(
  *      url="{schema}://{url}",
  *      description="Local environment",
@@ -22,7 +22,7 @@ namespace Http;
  *          default="localhost"
  *      )
  * )
- * 
+ *
  * @OA\SecurityScheme(
  *   securityScheme="bearerToken",
  *   type="apiKey",

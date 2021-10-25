@@ -27,6 +27,6 @@ Route::group(['prefix' => '/v1', 'as' => 'api.'], function () {
         });
 
         // Charges
-        Route::apiResource('charges', 'API\\Payment\\ChargesController');
+        Route::apiResource('charge', 'API\\Payment\\ChargeController');
     });
 });

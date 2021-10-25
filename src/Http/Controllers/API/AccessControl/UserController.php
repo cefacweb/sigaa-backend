@@ -10,6 +10,6 @@ class UserController extends Controller
 {
     public function index()
     {
-        return new UserResource(Auth::user());
+        return (new UserResource(Auth::user()))->response()->setStatusCode(200);
     }
 }

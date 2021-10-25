@@ -19,7 +19,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
  * )
  */
 
-class ChargesController extends Controller
+class ChargeController extends Controller
 {
     /**
      *     @OA\Tag(
@@ -77,12 +77,5 @@ class ChargesController extends Controller
         $charge->update($request->validated());
 
         return new ChargeResource($charge);
-    }
-
-    public function destroy(Charge $charge): JsonResponse
-    {
-        $charge->delete();
-
-        return response()->json(['data' => ['id' => $charge->id]]);
     }
 }

@@ -14,9 +14,8 @@ class UpdateChargeRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => 'required|exists:users,id',
-            'value' => 'required',
-            // 'type' => 'required',
+            'value' => '',
+            'type' => 'in:recurrent,single',
         ];
     }
 }
