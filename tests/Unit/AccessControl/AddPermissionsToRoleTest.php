@@ -3,12 +3,12 @@
 namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
-use Domain\Entities\AccessControl\Role;
-use Exceptions\InvalidPermissionException;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Exceptions\InvalidPermissionException;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\RoleRepository;
-use Application\UseCases\AccessControl\AddPermissionsToRole;
+use Src\Infra\AccessControl\Repositories\RoleRepository;
+use Src\Application\UseCases\AccessControl\AddPermissionsToRole;
 
 class AddPermissionsToRoleTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Infra;
+namespace Src\Infra;
 
 interface DTOInterface
 {

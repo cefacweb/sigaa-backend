@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PermissionFactory extends Factory

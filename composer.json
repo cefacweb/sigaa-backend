@@ -32,13 +32,7 @@
         "psr-4": {
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Console\\": "src/Console/",
-            "Domain\\": "src/Domain",
-            "Exceptions\\": "src/Exceptions/",
-            "Http\\": "src/Http/",
-			"Infra\\": "src/Infra/",
-            "Providers\\": "src/Providers/",
-            "Application\\": "src/Application/"
+			"Src\\": "src"
         }
     },
     "autoload-dev": {

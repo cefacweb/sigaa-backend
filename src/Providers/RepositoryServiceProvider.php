@@ -1,6 +1,6 @@
 <?php
 
-namespace Providers;
+namespace Src\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -12,16 +12,17 @@ class RepositoryServiceProvider extends ServiceProvider
      * @var array
      */
     public $bindings = [
-        \Domain\Repositories\AccessControl\UserRepositoryInterface::class => \Infra\AccessControl\Repositories\UserRepository::class,
-        \Domain\Repositories\AccessControl\RoleRepositoryInterface::class => \Infra\AccessControl\Repositories\RoleRepository::class,
-        \Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Infra\AccessControl\Repositories\PermissionRepository::class,
+        \Src\Domain\Repositories\AccessControl\UserRepositoryInterface::class => \Src\Infra\AccessControl\Repositories\UserRepository::class,
+        \Src\Domain\Repositories\AccessControl\RoleRepositoryInterface::class => \Src\Infra\AccessControl\Repositories\RoleRepository::class,
+        \Src\Domain\Repositories\AccessControl\PermissionRepositoryInterface::class => \Src\Infra\AccessControl\Repositories\PermissionRepository::class,
 
-        \Domain\Repositories\Payment\ChargeRepositoryInterface::class => \Infra\Payment\Repositories\ChargeRepository::class
+        \Src\Domain\Repositories\Payment\ChargeRepositoryInterface::class => \Src\Infra\Payment\Repositories\ChargeRepository::class
+
     ];
 
     public function register()
     {
-        $this->app->bind(\Domain\Repositories\AccessControl\LoginRepositoryInterface::class, function () {
+        $this->app->bind(\Src\Domain\Repositories\AccessControl\LoginRepositoryInterface::class, function () {
             return \Illuminate\Support\Facades\Auth::guard('web');
         });
     }

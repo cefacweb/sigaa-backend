@@ -15,6 +15,8 @@ $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
 
+$app->useAppPath(__DIR__ . '/../src');
+
 /*
 |--------------------------------------------------------------------------
 | Bind Important Interfaces
@@ -28,17 +30,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    Http\Kernel::class
+    Src\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    Console\Kernel::class
+    Src\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    Exceptions\Handler::class
+    Src\Exceptions\Handler::class
 );
 
 /*

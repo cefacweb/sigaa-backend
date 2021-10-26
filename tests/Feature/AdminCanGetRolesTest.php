@@ -4,11 +4,11 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\RoleRepository;
+use Src\Infra\AccessControl\Repositories\RoleRepository;
 
 class AdminCanGetRolesTest extends TestCase
 {

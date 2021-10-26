@@ -1,6 +1,6 @@
 <?php
 
-namespace Http;
+namespace Src\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -14,12 +14,12 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
-        // \Http\Middleware\TrustHosts::class,
-        \Http\Middleware\TrustProxies::class,
+        // \Src\Http\Middleware\TrustHosts::class,
+        \Src\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
-        \Http\Middleware\PreventRequestsDuringMaintenance::class,
+        \Src\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \Http\Middleware\TrimStrings::class,
+        \Src\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
@@ -30,12 +30,12 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Http\Middleware\EncryptCookies::class,
+            \Src\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Http\Middleware\VerifyCsrfToken::class,
+            \Src\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 

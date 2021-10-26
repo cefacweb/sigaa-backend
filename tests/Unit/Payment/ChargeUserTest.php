@@ -3,8 +3,8 @@
 namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
-use Domain\Entities\AccessControl\User;
-use Application\UseCases\Payment\ChargeUser;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Application\UseCases\Payment\ChargeUser;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChargeUserTest extends TestCase

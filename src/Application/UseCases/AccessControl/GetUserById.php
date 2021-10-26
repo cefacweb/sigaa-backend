@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
-use Infra\AccessControl\DTO\UserDTO;
-use Domain\Repositories\AccessControl\UserRepositoryInterface;
+use Src\Infra\AccessControl\DTO\UserDTO;
+use Src\Domain\Repositories\AccessControl\UserRepositoryInterface;
 
 class GetUserById
 {

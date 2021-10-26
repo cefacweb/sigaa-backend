@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Entities\Payment;
+namespace Src\Domain\Entities\Payment;
 
-use Domain\Entities\Traits\HasUuids;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\Traits\HasUuids;
+use Src\Domain\Entities\AccessControl\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**

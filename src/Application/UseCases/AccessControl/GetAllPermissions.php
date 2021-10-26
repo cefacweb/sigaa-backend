@@ -1,9 +1,10 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
-use Domain\Repositories\AccessControl\PermissionRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\PermissionRepositoryInterface;
+
 
 class GetAllPermissions
 {

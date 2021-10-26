@@ -1,14 +1,14 @@
 <?php
 
-namespace Http\Controllers\API\Payment;
+namespace Src\Http\Controllers\API\Payment;
 
-use Http\Controllers\Controller;
+use Src\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Http\Resources\ChargeResource;
-use Domain\Entities\Payment\Charge;
-use Application\UseCases\Payment\ChargeUser;
-use Http\Requests\Payment\StoreChargeRequest;
-use Http\Requests\Payment\UpdateChargeRequest;
+use Src\Http\Resources\ChargeResource;
+use Src\Domain\Entities\Payment\Charge;
+use Src\Application\UseCases\Payment\ChargeUser;
+use Src\Http\Requests\Payment\StoreChargeRequest;
+use Src\Http\Requests\Payment\UpdateChargeRequest;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 /**

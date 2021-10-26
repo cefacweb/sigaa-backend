@@ -4,7 +4,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserCanGetOwnInformationTest extends TestCase

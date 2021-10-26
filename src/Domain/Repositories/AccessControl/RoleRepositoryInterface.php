@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Repositories\AccessControl;
+namespace Src\Domain\Repositories\AccessControl;
 
 use Illuminate\Support\Collection;
 

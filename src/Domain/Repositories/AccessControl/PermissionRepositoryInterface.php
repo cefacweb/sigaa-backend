@@ -1,8 +1,8 @@
 <?php
 
-namespace Domain\Repositories\AccessControl;
+namespace Src\Domain\Repositories\AccessControl;
 
-use Infra\AccessControl\DTO\PermissionDTO;
+use Src\Infra\AccessControl\DTO\PermissionDTO;
 
 interface PermissionRepositoryInterface
 {

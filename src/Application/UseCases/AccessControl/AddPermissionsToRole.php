@@ -1,12 +1,12 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
-use Exceptions\InvalidPermissionException;
+use Src\Exceptions\InvalidPermissionException;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
-use Domain\Repositories\AccessControl\RoleRepositoryInterface;
-use Domain\Repositories\AccessControl\PermissionRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\RoleRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\PermissionRepositoryInterface;
 
 class AddPermissionsToRole
 {

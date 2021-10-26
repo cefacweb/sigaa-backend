@@ -4,7 +4,8 @@ namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Illuminate\Http\Request;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Application\UseCases\AccessControl\Login;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class LoginTest extends TestCase

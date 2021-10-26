@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\Role;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RoleFactory extends Factory

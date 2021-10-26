@@ -1,9 +1,9 @@
 <?php
 
-namespace Providers;
+namespace Src\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider

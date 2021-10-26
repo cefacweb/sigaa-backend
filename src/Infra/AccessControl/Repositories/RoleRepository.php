@@ -1,13 +1,13 @@
 <?php
 
-namespace Infra\AccessControl\Repositories;
+namespace Src\Infra\AccessControl\Repositories;
 
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Support\Collection;
-use Infra\AccessControl\DTO\RoleDTO;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Domain\Repositories\AccessControl\RoleRepositoryInterface;
+use Src\Infra\AccessControl\DTO\RoleDTO;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Domain\Repositories\AccessControl\RoleRepositoryInterface;
 
 class RoleRepository implements RoleRepositoryInterface
 {

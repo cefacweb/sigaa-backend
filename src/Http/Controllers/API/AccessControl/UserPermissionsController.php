@@ -1,10 +1,10 @@
 <?php
 
-namespace Http\Controllers\API\AccessControl;
+namespace Src\Http\Controllers\API\AccessControl;
 
-use Http\Controllers\Controller;
+use Src\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Http\Resources\PermissionResource;
+use Src\Http\Resources\PermissionResource;
 
 class UserPermissionsController extends Controller
 {

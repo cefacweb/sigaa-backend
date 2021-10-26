@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use Domain\Entities\Payment\Charge;
+use Src\Domain\Entities\Payment\Charge;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ChargeFactory extends Factory

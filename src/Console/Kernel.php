@@ -1,6 +1,6 @@
 <?php
 
-namespace Console;
+namespace Src\Console;
 
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 

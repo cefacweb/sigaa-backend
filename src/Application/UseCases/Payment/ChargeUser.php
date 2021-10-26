@@ -1,11 +1,11 @@
 <?php
 
-namespace Application\UseCases\Payment;
+namespace Src\Application\UseCases\Payment;
 
 use DateTime;
-use Domain\Repositories\Payment\ChargeRepositoryInterface;
-use Domain\Repositories\AccessControl\UserRepositoryInterface;
-use Infra\Payment\DTO\ChargeDTO;
+use Src\Domain\Repositories\Payment\ChargeRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\UserRepositoryInterface;
+use Src\Infra\Payment\DTO\ChargeDTO;
 
 class ChargeUser
 {

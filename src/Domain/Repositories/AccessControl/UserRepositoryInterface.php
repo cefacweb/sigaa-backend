@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Repositories\AccessControl;
+namespace Src\Domain\Repositories\AccessControl;
 
-use Infra\AccessControl\DTO\UserDTO;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection;
+use Src\Infra\AccessControl\DTO\UserDTO;
 
 interface UserRepositoryInterface
 {

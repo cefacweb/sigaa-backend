@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Http\Request;
-use Domain\Repositories\AccessControl\LoginRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\LoginRepositoryInterface;
 
 class Login
 {

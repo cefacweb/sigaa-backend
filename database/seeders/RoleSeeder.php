@@ -13,6 +13,6 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        \Domain\Entities\AccessControl\Role::factory(3)->create();
+        \Src\Domain\Entities\AccessControl\Role::factory(3)->create();
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Repositories\Payment;
+namespace Src\Domain\Repositories\Payment;
 
 use DateTime;
-use Infra\Payment\DTO\ChargeDTO;
+use Src\Infra\Payment\DTO\ChargeDTO;
 
 interface ChargeRepositoryInterface
 {

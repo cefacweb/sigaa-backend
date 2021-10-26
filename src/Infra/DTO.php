@@ -1,10 +1,10 @@
 <?php
 
-namespace Infra;
+namespace Src\Infra;
 
 
 use ReflectionClass;
-use Infra\DTOInterface;
+use Src\Infra\DTOInterface;
 use ReflectionProperty;
 
 abstract class DTO implements DTOInterface

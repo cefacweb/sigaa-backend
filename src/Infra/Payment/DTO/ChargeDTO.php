@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Infra\Payment\DTO;
+namespace Src\Infra\Payment\DTO;
 
-use Infra\AccessControl\DTO\UserDTO;
-use Infra\DTO;
+use Src\Infra\AccessControl\DTO\UserDTO;
+use Src\Infra\DTO;
 
 class ChargeDTO extends DTO
 {

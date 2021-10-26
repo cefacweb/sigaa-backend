@@ -1,9 +1,9 @@
 <?php
 
-namespace Http\Controllers\API\AccessControl;
+namespace Src\Http\Controllers\API\AccessControl;
 
-use Http\Controllers\Controller;
-use Http\Resources\UserResource;
+use Src\Http\Controllers\Controller;
+use Src\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller

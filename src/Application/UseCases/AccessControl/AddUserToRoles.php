@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
-use Domain\Repositories\AccessControl\RoleRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\RoleRepositoryInterface;
 
 class AddUserToRoles
 {

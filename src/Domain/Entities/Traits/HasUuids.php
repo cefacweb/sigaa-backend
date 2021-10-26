@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Entities\Traits;
+namespace Src\Domain\Entities\Traits;
 
 use Illuminate\Support\Str;
 

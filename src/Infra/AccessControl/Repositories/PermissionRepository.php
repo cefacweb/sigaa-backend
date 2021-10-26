@@ -1,11 +1,11 @@
 <?php
 
-namespace Infra\AccessControl\Repositories;
+namespace Src\Infra\AccessControl\Repositories;
 
-use Infra\AccessControl\DTO\PermissionDTO;
+use Src\Infra\AccessControl\DTO\PermissionDTO;
 use Illuminate\Support\Collection;
-use Domain\Entities\AccessControl\Permission;
-use Domain\Repositories\AccessControl\PermissionRepositoryInterface;
+use Src\Domain\Entities\AccessControl\Permission;
+use Src\Domain\Repositories\AccessControl\PermissionRepositoryInterface;
 
 class PermissionRepository implements PermissionRepositoryInterface
 {

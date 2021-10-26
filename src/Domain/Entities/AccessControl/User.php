@@ -1,9 +1,10 @@
 <?php
 
-namespace Domain\Entities\AccessControl;
+namespace Src\Domain\Entities\AccessControl;
 
-use Domain\Entities\Payment\Charge;
-use Domain\Entities\Traits\HasUuids;
+use Laravel\Sanctum\HasApiTokens;
+use Src\Domain\Entities\Payment\Charge;
+use Src\Domain\Entities\Traits\HasUuids;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasRoles, HasUuids;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, HasUuids;
 
     /**
      * The attributes that are mass assignable.
