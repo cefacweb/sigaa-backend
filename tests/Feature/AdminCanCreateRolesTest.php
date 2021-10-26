@@ -8,9 +8,8 @@ use Domain\Entities\AccessControl\Role;
 use Domain\Entities\AccessControl\User;
 use Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\PermissionRepository;
 
-class AdminCanGetAllPermissionsTest extends TestCase
+class AdminCanCreateRolesTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -42,23 +41,27 @@ class AdminCanGetAllPermissionsTest extends TestCase
     {
         Auth::login($this->admin);
 
-        $response = $this->getJson(
-            route("admin.permissions.index")
+        $response = $this->postJson(
+            route('admin.roles.store'),
+            [
+                "name" => "Invalid Id",
+                "description" => "100"
+            ]
         );
 
-        $responseIds = collect($response->json()['data'])->pluck('id');
-        $repositoryIds = (new PermissionRepository)->all()->pluck('id');
-
-        // TODO maybe check for pagination.
-        $this->assertEquals($responseIds, $repositoryIds);
+        $response->assertStatus(201);
     }
 
     public function test_user_cant_get_permissions()
     {
         Auth::login($this->user);
 
-        $response = $this->getJson(
-            route("admin.permissions.index")
+        $response = $this->postJson(
+            route('admin.roles.store'),
+            [
+                "name" => "Invalid Id",
+                "description" => "100"
+            ]
         );
 
         $response->assertForbidden();
