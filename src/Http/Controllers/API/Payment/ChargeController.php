@@ -23,30 +23,29 @@ class ChargeController extends Controller
 {
     /**
      *     @OA\Tag(
-     *       name="Charges",
-     *       description="Charges"
+     *         name="Charges",
+     *         description="Charges"
      *     )
      */
 
     /**
      * @OA\Get(
-     *     path="/api/v1/charges",
+     *     path="/api/v1/charge",
      *     tags={"Charges"},
      *     security={{"bearerToken":{}}},
      *     @OA\Response(
-     *      response="200",
-     *      description="Successful operation",
-     *      @OA\MediaType(
-     *          mediaType="application/json",
-     *          schema="charge"
-     *      ),
+     *        response="200",
+     *        description="Successful operation",
+     *        @OA\MediaType(
+     *            mediaType="application/json",
+     *        ),
      *     ),
      *     @OA\Response(
-     *      response="401",
-     *      description="Unauthenticated",
-     *      @OA\MediaType(
-     *          mediaType="application/json",
-     *      ),
+     *         response="401",
+     *         description="Unauthenticated",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *         ),
      *     )
      * )
      *
@@ -56,6 +55,29 @@ class ChargeController extends Controller
     {
         return ChargeResource::collection(Charge::paginate(10));
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v1/charge/{charge_id}",
+     *     tags={"Charges"},
+     *     security={{"bearerToken":{}}},
+     *     @OA\Response(
+     *        response="200",
+     *        description="Successful operation",
+     *        @OA\MediaType(
+     *            mediaType="application/json",
+     *        ),
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthenticated",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *         ),
+     *     )
+     * )
+     *
+     */
 
     public function show(Charge $charge): ChargeResource
     {

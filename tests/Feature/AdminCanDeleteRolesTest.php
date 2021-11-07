@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class AdminCanUpdateRolesTest extends TestCase
+class AdminCanDeleteRolesTest extends TestCase
 {
     use RefreshDatabase;
     use WithFaker;
@@ -46,25 +46,19 @@ class AdminCanUpdateRolesTest extends TestCase
     {
         Auth::login($this->admin);
 
-        $response = $this->putJson(
-            route('admin.roles.update', $this->role->id),
-            [
-                'name' => $this->faker->unique()->word()
-            ]
+        $response = $this->deleteJson(
+            route('admin.roles.destroy', $this->role->id)
         );
 
         $response->assertStatus(200);
     }
 
-    public function test_user_cant_update_role()
+    public function test_user_cant_update_roles()
     {
         Auth::login($this->user);
 
-        $response = $this->putJson(
-            route('admin.roles.update', $this->role->id),
-            [
-                'name' => $this->faker->unique()->word()
-            ]
+        $response = $this->deleteJson(
+            route('admin.roles.destroy', $this->role->id)
         );
 
         $response->assertForbidden();
