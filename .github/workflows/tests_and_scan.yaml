@@ -1,4 +1,4 @@
-name: PR validation
+name: Tests and scan
 on:
   push:
     branches:
