@@ -1,15 +1,15 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Src\Http\Controllers\Admin\AccessControl;
 
-use Http\Controllers\Controller;
-use Http\Resources\RoleResource;
-use Http\Resources\UserResource;
+use Src\Http\Controllers\Controller;
+use Src\Http\Resources\RoleResource;
+use Src\Http\Resources\UserResource;
 use Illuminate\Http\JsonResponse;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Application\UseCases\AccessControl\AddUserToRoles;
-use Http\Requests\AccessControl\StoreUsersPermissionRequest;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Application\UseCases\AccessControl\AddUserToRoles;
+use Src\Http\Requests\AccessControl\StoreUsersPermissionRequest;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserRolesController extends Controller
@@ -25,7 +25,7 @@ class UserRolesController extends Controller
         $validatedRequest = $request->validated();
 
         $useCase = new AddUserToRoles();
-        $useCase($user, collect([$validatedRequest['role_name']]));
+        $useCase($user->id, collect([$validatedRequest['role_id']]));
 
         return (new UserResource($user))->response()->setStatusCode(201);
     }

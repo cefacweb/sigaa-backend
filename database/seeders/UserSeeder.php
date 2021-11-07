@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Domain\Entities\AccessControl\User;
 use Illuminate\Database\Seeder;
+use Src\Domain\Entities\AccessControl\User;
 
 class UserSeeder extends Seeder
 {

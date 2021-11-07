@@ -1,22 +1,19 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Src\Http\Controllers\Admin\AccessControl;
 
-use Http\Controllers\Controller;
-use Http\Resources\RoleResource;
+use Src\Http\Controllers\Controller;
+use Src\Http\Resources\RoleResource;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Support\Facades\Gate;
-use Domain\Entities\AccessControl\Role;
-use Http\Requests\AccessControl\StoreRolesRequest;
-use Http\Requests\AccessControl\UpdateRolesRequest;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Http\Requests\AccessControl\StoreRolesRequest;
+use Src\Http\Requests\AccessControl\UpdateRolesRequest;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class RolesController extends Controller
 {
     public function index(): AnonymousResourceCollection
     {
-        Gate::authorize('admin');
-
         return RoleResource::collection(Role::paginate(10));
     }
 

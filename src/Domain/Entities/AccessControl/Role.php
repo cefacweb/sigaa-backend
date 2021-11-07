@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Entities\AccessControl;
+namespace Src\Domain\Entities\AccessControl;
 
-use Domain\Entities\Traits\HasUuids;
-use Exceptions\InvalidRoleException;
+use Src\Domain\Entities\Traits\HasUuids;
+use Src\Exceptions\InvalidRoleException;
 use Spatie\Permission\Models\Role as BaseRole;
 use Spatie\Permission\Contracts\Role as RoleContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,7 +17,7 @@ class Role extends BaseRole
         $role = static::where('id', $id)->first();
 
         if (! $role) {
-            throw InvalidRoleException::class;
+            throw new InvalidRoleException;
         }
 
         return $role;

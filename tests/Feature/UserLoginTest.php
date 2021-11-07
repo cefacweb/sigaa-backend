@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserLoginTest extends TestCase

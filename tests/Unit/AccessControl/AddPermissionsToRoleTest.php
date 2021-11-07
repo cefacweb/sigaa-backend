@@ -3,12 +3,12 @@
 namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
-use Domain\Entities\AccessControl\Role;
-use Exceptions\InvalidPermissionException;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Exceptions\InvalidPermissionException;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\RoleRepository;
-use Application\UseCases\AccessControl\AddPermissionsToRole;
+use Src\Infra\AccessControl\Repositories\RoleRepository;
+use Src\Application\UseCases\AccessControl\AddPermissionsToRole;
 
 class AddPermissionsToRoleTest extends TestCase
 {
@@ -28,11 +28,11 @@ class AddPermissionsToRoleTest extends TestCase
         $this->permission = Permission::factory()->create();
 
         $useCase = new AddPermissionsToRole(new RoleRepository);
-        $useCase($this->role->id, collect([$this->permission->name]));
+        $useCase($this->role->id, collect([$this->permission->id]));
 
         $this->assertDatabaseHas('role_has_permissions', [
             'role_id' => $this->role->id,
-            'permission_id' => Permission::findByName($this->permission->name)->id
+            'permission_id' => $this->permission->id
         ]);
     }
 

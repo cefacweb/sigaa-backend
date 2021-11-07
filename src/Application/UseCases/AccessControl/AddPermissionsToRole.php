@@ -1,12 +1,12 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Support\Collection;
-use Exceptions\InvalidPermissionException;
-use Domain\Entities\AccessControl\Permission;
+use Src\Exceptions\InvalidPermissionException;
 use Spatie\Permission\Exceptions\PermissionDoesNotExist;
-use Domain\Repositories\AccessControl\RoleRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\RoleRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\PermissionRepositoryInterface;
 
 class AddPermissionsToRole
 {
@@ -14,21 +14,20 @@ class AddPermissionsToRole
 
     public function __construct()
     {
+        $this->permissionRepository = app()->make(PermissionRepositoryInterface::class);
         $this->roleRepository = app()->make(RoleRepositoryInterface::class);
     }
 
-    public function __invoke(string $roleId, Collection $permissions): void
+    public function __invoke(string $roleId, Collection $permissionIds): void
     {
-        $role = $this->roleRepository->find($roleId);
-
-        $permissions->each(function ($permissionName) {
+        $permissionIds->each(function ($permissionId) {
             try {
-                Permission::findByName($permissionName);
+                $this->permissionRepository->findByUuid($permissionId);
             } catch (PermissionDoesNotExist) {
                 throw new InvalidPermissionException;
             }
         });
 
-        $role->syncPermissions($permissions);
+        $this->roleRepository->addPermissionsToRole($roleId, $permissionIds);
     }
 }

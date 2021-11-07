@@ -1,6 +1,6 @@
 <?php
 
-namespace Http\Requests\AccessControl;
+namespace Src\Http\Requests\AccessControl;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,7 @@ class StoreUsersPermissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'role_name' => 'required|exists:roles,name'
+            'role_id' => 'required|exists:roles,id'
         ];
     }
 }

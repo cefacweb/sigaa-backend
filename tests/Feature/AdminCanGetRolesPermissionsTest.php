@@ -4,18 +4,19 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\PermissionRepository;
+use Src\Infra\AccessControl\Repositories\PermissionRepository;
 
-class AdminCanGetAllPermissionsTest extends TestCase
+class AdminCanGetRolesPermissionsTest extends TestCase
 {
     use RefreshDatabase;
 
     private $admin;
     private $user;
+    private $adminRole;
 
     protected function setUp(): void
     {
@@ -31,11 +32,11 @@ class AdminCanGetAllPermissionsTest extends TestCase
         $this->permissions->push($this->permission->name);
 
         // Create admin role
-        $adminRole = Role::factory()->create();
-        $adminRole->syncPermissions($this->permissions);
+        $this->adminRole = Role::factory()->create();
+        $this->adminRole->syncPermissions($this->permissions);
 
         // Assign role to user
-        $this->admin->assignRole($adminRole->name);
+        $this->admin->assignRole($this->adminRole->name);
     }
 
     public function test_admin_can_get_permissions()
@@ -43,14 +44,13 @@ class AdminCanGetAllPermissionsTest extends TestCase
         Auth::login($this->admin);
 
         $response = $this->getJson(
-            route("admin.permissions.index")
+            route("admin.roles.permissions.index", $this->adminRole->id)
         );
 
         $responseIds = collect($response->json()['data'])->pluck('id');
-        $repositoryIds = (new PermissionRepository)->all()->pluck('id');
 
         // TODO maybe check for pagination.
-        $this->assertEquals($responseIds, $repositoryIds);
+        $this->assertEquals($responseIds, collect($this->permission->id));
     }
 
     public function test_user_cant_get_permissions()
@@ -58,7 +58,7 @@ class AdminCanGetAllPermissionsTest extends TestCase
         Auth::login($this->user);
 
         $response = $this->getJson(
-            route("admin.permissions.index")
+            route("admin.roles.permissions.index", $this->adminRole->id)
         );
 
         $response->assertForbidden();

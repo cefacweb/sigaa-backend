@@ -4,6 +4,7 @@ namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
 use Illuminate\Http\Request;
+use Src\Application\UseCases\AccessControl\Logout;
 
 class LogoutTest extends TestCase
 {

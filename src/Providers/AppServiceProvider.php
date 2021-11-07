@@ -1,6 +1,6 @@
 <?php
 
-namespace Providers;
+namespace Src\Providers;
 
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Support\ServiceProvider;

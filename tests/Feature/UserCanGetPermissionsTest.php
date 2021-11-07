@@ -4,9 +4,9 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserCanGetPermissionsTest extends TestCase
@@ -43,7 +43,7 @@ class UserCanGetPermissionsTest extends TestCase
     public function test_user_can_get_permissions()
     {
         $response = $this->getJson(
-            route('api.users.permissions.index')
+            route('api.user.permissions.index')
         );
 
         $response->assertStatus(200);

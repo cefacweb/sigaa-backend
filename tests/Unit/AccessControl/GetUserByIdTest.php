@@ -3,9 +3,10 @@
 namespace Application\UseCases\AccessControl;
 
 use Tests\TestCase;
-use Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\UserRepository;
+use Src\Application\UseCases\AccessControl\GetUserById;
+use Src\Infra\AccessControl\Repositories\UserRepository;
 
 class GetUserByIdTest extends TestCase
 {

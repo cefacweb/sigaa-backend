@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Database\Migrations\Migration;
 
 class AddInitialPermissions extends Migration

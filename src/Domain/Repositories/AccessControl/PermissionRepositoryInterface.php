@@ -1,12 +1,12 @@
 <?php
 
-namespace Domain\Repositories\AccessControl;
+namespace Src\Domain\Repositories\AccessControl;
 
-use Illuminate\Database\Eloquent\Collection;
+use Src\Infra\AccessControl\DTO\PermissionDTO;
 
 interface PermissionRepositoryInterface
 {
     public function all();
 
-    public function findAllByUserId(string $id = ""): Collection;
+    public function findByUuid(string $id): PermissionDTO;
 }

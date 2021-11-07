@@ -1,13 +1,13 @@
 <?php
 
-namespace Http\Controllers\AccessControl;
+namespace Src\Http\Controllers\API\AccessControl;
 
 use Illuminate\Http\Request;
-use Http\Controllers\Controller;
+use Src\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
-use Application\UseCases\AccessControl\Login;
-use Http\Requests\AccessControl\LoginRequest;
-use Application\UseCases\AccessControl\Logout;
+use Src\Application\UseCases\AccessControl\Login;
+use Src\Http\Requests\AccessControl\LoginRequest;
+use Src\Application\UseCases\AccessControl\Logout;
 
 class SimpleAuthController extends Controller
 {

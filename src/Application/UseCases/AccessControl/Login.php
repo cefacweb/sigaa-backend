@@ -1,9 +1,9 @@
 <?php
 
-namespace Application\UseCases\AccessControl;
+namespace Src\Application\UseCases\AccessControl;
 
 use Illuminate\Http\Request;
-use Domain\Repositories\AccessControl\LoginRepositoryInterface;
+use Src\Domain\Repositories\AccessControl\LoginRepositoryInterface;
 
 class Login
 {
@@ -16,7 +16,7 @@ class Login
 
     public function __invoke(string $email, string $password, Request $request): bool
     {
-        $logged = $this->loginRepository::attempt(['email' => $email, 'password' => $password]);
+        $logged = $this->loginRepository->attempt(['email' => $email, 'password' => $password]);
 
         if ($logged) {
             $request->session()->regenerate();

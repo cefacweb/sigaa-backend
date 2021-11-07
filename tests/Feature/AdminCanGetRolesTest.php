@@ -4,13 +4,13 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Auth;
-use Domain\Entities\AccessControl\Role;
-use Domain\Entities\AccessControl\User;
-use Domain\Entities\AccessControl\Permission;
+use Src\Domain\Entities\AccessControl\Role;
+use Src\Domain\Entities\AccessControl\User;
+use Src\Domain\Entities\AccessControl\Permission;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Infra\AccessControl\Repositories\RoleRepository;
+use Src\Infra\AccessControl\Repositories\RoleRepository;
 
-class AdminCanGetAllRolesTest extends TestCase
+class AdminCanGetRolesTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -31,14 +31,14 @@ class AdminCanGetAllRolesTest extends TestCase
         $this->permissions->push($this->permission->name);
 
         // Create admin role
-        $adminRole = Role::factory()->create();
-        $adminRole->syncPermissions($this->permissions);
+        $this->adminRole = Role::factory()->create();
+        $this->adminRole->syncPermissions($this->permissions);
 
         // Assign role to user
-        $this->admin->assignRole($adminRole->name);
+        $this->admin->assignRole($this->adminRole->name);
     }
 
-    public function test_admin_can_get_permissions()
+    public function test_admin_can_get_roles()
     {
         Auth::login($this->admin);
 
@@ -53,12 +53,34 @@ class AdminCanGetAllRolesTest extends TestCase
         $this->assertEquals($responseIds, $repositoryIds);
     }
 
-    public function test_user_cant_get_permissions()
+    public function test_admin_can_get_single_role()
+    {
+        Auth::login($this->admin);
+
+        $response = $this->getJson(
+            route('admin.roles.show', $this->adminRole->id)
+        );
+
+        $response->assertStatus(200);
+    }
+
+    public function test_user_cant_get_roles()
     {
         Auth::login($this->user);
 
         $response = $this->getJson(
             route("admin.roles.index")
+        );
+
+        $response->assertForbidden();
+    }
+
+    public function test_user_cant_get_single_role()
+    {
+        Auth::login($this->user);
+
+        $response = $this->getJson(
+            route('admin.roles.show', $this->adminRole->id)
         );
 
         $response->assertForbidden();

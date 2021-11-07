@@ -14,10 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => '/v1', 'as' => 'api.'], function () {
-    Route::post('auth/simpleauth/login', 'AccessControl\\SimpleAuthController@login')->name('auth.login');
+    Route::post('auth/simpleauth/login', 'API\\AccessControl\\SimpleAuthController@login')->name('auth.login');
 
     Route::group(['middleware' => 'auth:sanctum'], function () {
-        Route::get('auth/simpleauth/logout', 'AccessControl\\SimpleAuthController@logout')->name('auth.logout');
-        Route::name('users')->apiResource('user/permissions', 'AccessControl\\UserPermissionsController')->only('index');
+        // Auth
+        Route::get('auth/simpleauth/logout', 'API\\AccessControl\\SimpleAuthController@logout')->name('auth.logout');
+
+        // User
+        Route::apiResource('user', 'API\\AccessControl\\UserController')->only(['index']);
+        Route::group(['prefix' => '/user', 'as' => 'user.'], function () {
+            Route::apiResource('permissions', 'API\\AccessControl\\UserPermissionsController')->only(['index']);
+        });
+
+        // Charges
+        Route::apiResource('charge', 'API\\Payment\\ChargeController');
     });
 });

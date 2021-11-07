@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Entities;
+namespace Src\Domain\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +11,7 @@ class MoradorRua extends Model
 
     /**
      * The table associated with the model.
-     *  
+     *
      * @var string
      */
     protected $table = 'morador_rua';

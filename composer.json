@@ -26,19 +26,14 @@
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3"
+        "phpunit/phpunit": "^9.3.3",
+		"zircote/swagger-php": "^3.2"
     },
     "autoload": {
         "psr-4": {
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Console\\": "src/Console/",
-            "Domain\\": "src/Domain",
-            "Exceptions\\": "src/Exceptions/",
-            "Http\\": "src/Http/",
-			"Infra\\": "src/Infra/",
-            "Providers\\": "src/Providers/",
-            "Application\\": "src/Application/"
+			"Src\\": "src"
         }
     },
     "autoload-dev": {
