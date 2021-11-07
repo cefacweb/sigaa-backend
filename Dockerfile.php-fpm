@@ -1,0 +1,21 @@
+FROM php:8-fpm-alpine
+
+LABEL maintainer="Fabiano Honorato <fabianoshz@gmail.com>"
+
+WORKDIR /var/www
+
+ENV LOG_CHANNEL="stderr"
+
+COPY "docker/php-fpm/php.ini" "$PHP_INI_DIR/php.ini"
+
+COPY "docker/php-fpm/www.conf" "/usr/local/etc/php-fpm.d/www.conf"
+
+COPY ./ /var/www/
+
+RUN docker-php-ext-install opcache pdo_mysql
+
+RUN chown -R www-data:www-data /var/www/
+
+USER www-data
+
+EXPOSE 9000
