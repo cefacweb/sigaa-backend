@@ -4,7 +4,9 @@ LABEL maintainer="Fabiano Honorato <fabianoshz@gmail.com>"
 
 WORKDIR /var/www
 
-COPY "docker/nginx/default.conf" "/etc/nginx/conf.d/default.conf"
+COPY "docker/nginx/nginx.conf" "/etc/nginx/nginx.conf"
+
+COPY "docker/nginx/default.conf" "/etc/nginx/templates/default.conf.template"
 
 COPY ./ /var/www/
 

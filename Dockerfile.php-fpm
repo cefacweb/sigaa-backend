@@ -1,3 +1,9 @@
+FROM composer:2.1.11 as builder
+
+COPY ./ /app
+
+RUN composer install
+
 FROM php:8-fpm-alpine
 
 LABEL maintainer="Fabiano Honorato <fabianoshz@gmail.com>"
@@ -10,7 +16,7 @@ COPY "docker/php-fpm/php.ini" "$PHP_INI_DIR/php.ini"
 
 COPY "docker/php-fpm/www.conf" "/usr/local/etc/php-fpm.d/www.conf"
 
-COPY ./ /var/www/
+COPY --from=builder ./app /var/www/
 
 RUN docker-php-ext-install opcache pdo_mysql
 
